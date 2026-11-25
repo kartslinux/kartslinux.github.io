@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KArt's Linux - Kernel Product Catalog</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 20px; color: #222; background: #f9f9fb; }
+        header { background: #1a202c; color: #fff; padding: 25px; border-radius: 8px; margin-bottom: 25px; }
+        h1, h2 { margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: #2d3748; color: #fff; }
+        .box { background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid #3182ce; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .disclaimer { border-left-color: #e53e3e; background: #fff5f5; }
+        a { color: #2b6cb0; font-weight: bold; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🐧 KArt's Linux – Custom Kernel Catalog</h1>
+        <p>Current Stable Release Line: <strong>Linux 7.3.6</strong> | Purpose-built, security-hardened &amp; performance-tuned kernels.</p>
+    </header>
+
+    <h2>📦 Product Catalog / Termékkatalógus</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Catalog Code</th>
+                <th>Group</th>
+                <th>Profile</th>
+                <th>Arch</th>
+                <th>Description / Leírás</th>
+                <th>Release</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+    <tr>
+        <td>1</td>
+        <td><strong>SRV-CLD-X86</strong></td>
+        <td>SERVER</td>
+        <td>CLOUD / VPS</td>
+        <td><code>x86_64</code></td>
+        <td>Monolithic, zero-module minimal kernel optimized for KVM/Proxmox/AWS virtual servers. Minimal attack surface, fast boot.<br><small style="color:#555;">Monolitikus, modulmentes minimál kernel KVM/Proxmox/AWS virtuális szerverekhez. Minimális támadási felület, villámgyors indulás.</small></td>
+        <td><a href="https://github.com7.3.6-SRV-CLD-X86" target="_blank">Download / Letöltés</a></td>
+    </tr>
+    
+    <tr>
+        <td>2</td>
+        <td><strong>SRV-OFF-X86</strong></td>
+        <td>SERVER</td>
+        <td>OFFICE / NAS</td>
+        <td><code>x86_64</code></td>
+        <td>Storage and file server kernel with full Software RAID (0/1/5/6/10), LVM, XFS/Btrfs, and USB backup support.<br><small style="color:#555;">Tároló- és fájlszerver kernel teljes szoftveres RAID (0/1/5/6/10), LVM, XFS/Btrfs és USB mentési támogatással.</small></td>
+        <td><a href="https://github.com7.3.6-SRV-OFF-X86" target="_blank">Download / Letöltés</a></td>
+    </tr>
+    
+    <tr>
+        <td>3</td>
+        <td><strong>DSK-GAM-X86</strong></td>
+        <td>DESKTOP</td>
+        <td>GAMER</td>
+        <td><code>x86_64</code></td>
+        <td>1000Hz low-latency desktop kernel with NTSYNC enabled for high-FPS gaming (Proton/Wine) and responsive workloads.<br><small style="color:#555;">1000Hz-es, alacsony késleltetésű asztali kernel NTSYNC támogatással játékokhoz (Proton/Wine) és gyors munkavégzéshez.</small></td>
+        <td><a href="https://github.com7.3.6-DSK-GAM-X86" target="_blank">Download / Letöltés</a></td>
+    </tr>
+    
+    <tr>
+        <td>4</td>
+        <td><strong>DSK-HOM-X86</strong></td>
+        <td>DESKTOP</td>
+        <td>HOME / OFFICE</td>
+        <td><code>x86_64</code></td>
+        <td>Balanced desktop and laptop kernel with power-saving optimizations, full Wi-Fi, Bluetooth, and GPU hardware support.<br><small style="color:#555;">Kiegyensúlyozott asztali és laptop kernel energiatakarékos optimalizációval, teljes Wi-Fi, Bluetooth és GPU támogatással.</small></td>
+        <td><a href="https://github.com7.3.6-DSK-HOM-X86" target="_blank">Download / Letöltés</a></td>
+    </tr>
+    
+    <tr>
+        <td>5</td>
+        <td><strong>NET-RTR-ARM</strong></td>
+        <td>NETWORK</td>
+        <td>ROUTER / FIREWALL</td>
+        <td><code>arm64</code></td>
+        <td>Hardened ARM64 kernel for Raspberry Pi and SBC routers with full Netfilter, WireGuard VPN, VLAN, and QoS routing.<br><small style="color:#555;">Szigorított ARM64 kernel Raspberry Pi és SBC routerekhez teljes Netfilter, WireGuard VPN, VLAN és QoS támogatással.</small></td>
+        <td><a href="https://github.com7.3.6-NET-RTR-ARM" target="_blank">Download / Letöltés</a></td>
+    </tr>
+    
+        </tbody>
+    </table>
+
+    <div class="box">
+        <h2>📘 Technical Guide &amp; Package Overview / Szakmai Tájékoztató</h2>
+        <ul>
+            <li><strong>linux-image-*.deb / kernel-*.rpm:</strong> The core compiled Linux kernel (<code>vmlinuz</code>) and modules. Automatically updates GRUB and initramfs upon installation.</li>
+            <li><strong>linux-headers-*.deb / kernel-devel-*.rpm:</strong> C header files required only if you compile external out-of-tree kernel modules (e.g., NVIDIA proprietary drivers, VirtualBox, ZFS). Not needed for monolithic server kernels.</li>
+            <li><strong>vmlinuz-*:</strong> Raw standalone kernel binary for custom bootloaders, embedded devices, or specialized OS builds.</li>
+        </ul>
+        <p><strong>Why specialized kernels?</strong> Removing unused drivers and subsystems drastically reduces the <em>attack surface</em> (enhancing cybersecurity) and lowers RAM/CPU overhead. Conversely, a hardened server kernel will intentionally lack desktop hardware support (Wi-Fi, sound, 3D graphics). Always verify the catalog description before deployment.</p>
+    </div>
+
+    <div class="box disclaimer">
+        <h2>⚖️ Legal Disclaimer / Jogi Nyilatkozat</h2>
+        <p><strong>EN:</strong> KArt's Linux provides pre-configured and compiled builds of the upstream Linux kernel under the GNU General Public License v2 (GPLv2). We do not develop the upstream kernel source code; we strictly configure and compile it according to our catalog specifications. The authors assume <strong>no financial or legal liability</strong> for any system downtime, data loss, or hardware malfunction resulting from the use of these packages. Always test in a staging environment before production deployment.</p>
+        <p><strong>HU:</strong> A KArt's Linux a hivatalos Linux kernel forráskódjából készít előre konfigurált és lefordított csomagokat (GPLv2 licenc alatt). A projekt készítői nem vállalnak semmilyen anyagi vagy jogi felelősséget a csomagok használatából eredő rendszerleállásért vagy adatvesztésért; felelősségünk kizárólag arra terjed ki, hogy a csomagok a katalógusban rögzített funkcionális profilnak megfelelően készüljenek el.</p>
+    </div>
+</body>
+</html>
