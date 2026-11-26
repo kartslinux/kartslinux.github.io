@@ -1,110 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KArt's Linux - Kernel Product Catalog</title>
-    <style>
-        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; max-width: 1100px; margin: 0 auto; padding: 20px; color: #222; background: #f9f9fb; }
-        header { background: #1a202c; color: #fff; padding: 25px; border-radius: 8px; margin-bottom: 25px; }
-        h1, h2 { margin-top: 0; }
-        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 30px; }
-        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
-        th { background: #2d3748; color: #fff; }
-        .box { background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid #3182ce; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .disclaimer { border-left-color: #e53e3e; background: #fff5f5; }
-        a { color: #2b6cb0; font-weight: bold; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KArt's Linux – Kernel Product Catalog</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.5; max-width: 1100px; margin: 0 auto; padding: 20px; color: #1a202c; background: #f4f6f9; }
+    header { background: linear-gradient(135deg, #bee3f8 0%, #90cdf4 100%); color: #1a365d; padding: 24px; border-radius: 10px; margin-bottom: 24px; border: 1px solid #63b3ed; display: flex; align-items: center; gap: 18px; }
+    header img { width: 58px; height: 58px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12); background: #fff; }
+    header h1 { margin: 0 0 6px 0; font-size: 1.7rem; color: #1a365d; }
+    header p { margin: 0; color: #2c5282; }
+    .table-wrap { overflow-x: auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 28px; }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th { background: #ebf8ff; color: #2b6cb0; padding: 12px 14px; text-align: left; font-size: 0.85rem; text-transform: uppercase; border-bottom: 2px solid #bee3f8; }
+    td { padding: 10px 14px; vertical-align: middle; }
+    .idx-cell { font-weight: bold; color: #4a5568; text-align: center; border-bottom: 2px solid #cbd5e0; background: #f8fafc; width: 36px; }
+    .code-cell { font-weight: 700; color: #2b6cb0; white-space: nowrap; font-family: monospace; font-size: 1.05rem; }
+    .row-top td { border-top: 1px solid #e2e8f0; padding-bottom: 6px; }
+    .row-desc td { padding-top: 4px; padding-bottom: 14px; color: #4a5568; font-size: 0.95rem; border-bottom: 2px solid #cbd5e0; background: #fcfcfd; }
+    .dl-cell { white-space: nowrap; }
+    .dropdown { position: relative; display: inline-block; margin-right: 6px; }
+    .badge { display: inline-block; padding: 5px 10px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer; }
+    .badge.deb { background: #fed7e2; color: #97266d; border: 1px solid #fbb6ce; }
+    .badge.rpm { background: #fed7d7; color: #9b2c2c; border: 1px solid #feb2b2; }
+    .badge.bin { background: #e2e8f0; color: #2d3748; border: 1px solid #cbd5e0; }
+    .dropdown-content { display: none; position: absolute; right: 0; background: #fff; min-width: 220px; box-shadow: 0 8px 20px rgba(0,0,0,0.18); border-radius: 8px; z-index: 100; border: 1px solid #e2e8f0; }
+    .dropdown:hover .dropdown-content { display: block; }
+    .dd-title { background: #edf2f7; padding: 7px 12px; font-size: 0.75rem; font-weight: 700; color: #4a5568; text-transform: uppercase; }
+    .dropdown-content a { color: #2d3748; padding: 8px 12px; text-decoration: none; display: block; font-size: 0.86rem; border-bottom: 1px solid #f7fafc; }
+    .dropdown-content a:hover { background: #ebf8ff; color: #2b6cb0; }
+    .dropdown-content a.all-link { background: #f8fafc; font-weight: 600; color: #3182ce; }
+    .box { background: #fff; padding: 20px 24px; border-radius: 10px; border-left: 5px solid #3182ce; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+    .box h2 { margin-top: 0; font-size: 1.2rem; color: #2d3748; }
+    .disclaimer { border-left-color: #e53e3e; background: #fff5f5; }
+    .disclaimer h2 { color: #9b2c2c; }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🐧 KArt's Linux – Custom Kernel Catalog</h1>
-        <p>Current Stable Release Line: <strong>Linux 7.3.6</strong> | Purpose-built, security-hardened &amp; performance-tuned kernels.</p>
-    </header>
-
-    <h2>📦 Product Catalog / Termékkatalógus</h2>
+  <header>
+    <img src="https://githubusercontent.com" alt="KArt's Linux Tux">
+    <div>
+      <h1>KArt's Linux – Custom Kernel Catalog</h1>
+      <p>Current Stable Line: <strong>Linux 7.3.6</strong> &bull; Security-hardened &amp; performance-tuned kernels</p>
+    </div>
+  </header>
+  <div class="table-wrap">
     <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Catalog Code</th>
-                <th>Group</th>
-                <th>Profile</th>
-                <th>Arch</th>
-                <th>Description / Leírás</th>
-                <th>Release</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-    <tr>
-        <td>1</td>
-        <td><strong>SRV-CLD-X86</strong></td>
-        <td>SERVER</td>
-        <td>CLOUD / VPS</td>
-        <td><code>x86_64</code></td>
-        <td>Monolithic, zero-module minimal kernel optimized for KVM/Proxmox/AWS virtual servers. Minimal attack surface, fast boot.<br><small style="color:#555;">Monolitikus, modulmentes minimál kernel KVM/Proxmox/AWS virtuális szerverekhez. Minimális támadási felület, villámgyors indulás.</small></td>
-        <td><a href="https://github.com7.3.6-SRV-CLD-X86" target="_blank">Download / Letöltés</a></td>
+      <thead>
+        <tr><th>#</th><th>Catalog Code</th><th>Group</th><th>Profile</th><th>Arch</th><th>Downloads (Hover for Packages)</th></tr>
+      </thead>
+      <tbody>
+    <tr class="row-top">
+      <td rowspan="2" class="idx-cell">1</td><td class="code-cell">SRV-CLD-X86</td><td>SERVER</td><td>CLOUD / VPS</td><td><code>x86_64</code></td>
+      <td class="dl-cell">
+        <div class="dropdown"><span class="badge deb">🌀 DEB</span><div class="dropdown-content"><div class="dd-title">Debian / Ubuntu (.deb)</div><a href="https://github.com7.3.6-SRV-CLD-X86/linux-image-7.3.6-karts-srv-cld_7.3.6-2_amd64.deb">📦 linux-image</a><a href="https://github.com7.3.6-SRV-CLD-X86/linux-headers-7.3.6-karts-srv-cld_7.3.6-2_amd64.deb">🛠️ linux-headers</a><a href="https://github.com7.3.6-SRV-CLD-X86/linux-libc-dev_7.3.6-2_amd64.deb">📚 linux-libc-dev</a><a href="https://github.com7.3.6-SRV-CLD-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-SRV-CLD-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge rpm">🎩 RPM</span><div class="dropdown-content"><div class="dd-title">RHEL / Fedora (.rpm)</div><a href="https://github.com7.3.6-SRV-CLD-X86/kernel-7.3.6_karts_srv_cld-2.x86_64.rpm">📦 kernel</a><a href="https://github.com7.3.6-SRV-CLD-X86/kernel-headers-7.3.6_karts_srv_cld-2.x86_64.rpm">🛠️ kernel-headers</a><a href="https://github.com7.3.6-SRV-CLD-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-SRV-CLD-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge bin">⚙️ BIN</span><div class="dropdown-content"><div class="dd-title">Standalone Binary</div><a href="https://github.com7.3.6-SRV-CLD-X86/vmlinuz-7.3.6-karts-srv-cld-x86_64">🚀 vmlinuz</a><a href="https://github.com7.3.6-SRV-CLD-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-SRV-CLD-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+      </td>
     </tr>
-    
-    <tr>
-        <td>2</td>
-        <td><strong>SRV-OFF-X86</strong></td>
-        <td>SERVER</td>
-        <td>OFFICE / NAS</td>
-        <td><code>x86_64</code></td>
-        <td>Storage and file server kernel with full Software RAID (0/1/5/6/10), LVM, XFS/Btrfs, and USB backup support.<br><small style="color:#555;">Tároló- és fájlszerver kernel teljes szoftveres RAID (0/1/5/6/10), LVM, XFS/Btrfs és USB mentési támogatással.</small></td>
-        <td><a href="https://github.com7.3.6-SRV-OFF-X86" target="_blank">Download / Letöltés</a></td>
+    <tr class="row-desc"><td colspan="5">Monolithic, zero-module minimal kernel optimized for KVM/Proxmox/AWS virtual servers. Minimal attack surface, fast boot.</td></tr>
+
+    <tr class="row-top">
+      <td rowspan="2" class="idx-cell">2</td><td class="code-cell">SRV-OFF-X86</td><td>SERVER</td><td>OFFICE / NAS</td><td><code>x86_64</code></td>
+      <td class="dl-cell">
+        <div class="dropdown"><span class="badge deb">🌀 DEB</span><div class="dropdown-content"><div class="dd-title">Debian / Ubuntu (.deb)</div><a href="https://github.com7.3.6-SRV-OFF-X86/linux-image-7.3.6-karts-srv-off_7.3.6-2_amd64.deb">📦 linux-image</a><a href="https://github.com7.3.6-SRV-OFF-X86/linux-headers-7.3.6-karts-srv-off_7.3.6-2_amd64.deb">🛠️ linux-headers</a><a href="https://github.com7.3.6-SRV-OFF-X86/linux-libc-dev_7.3.6-2_amd64.deb">📚 linux-libc-dev</a><a href="https://github.com7.3.6-SRV-OFF-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-SRV-OFF-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge rpm">🎩 RPM</span><div class="dropdown-content"><div class="dd-title">RHEL / Fedora (.rpm)</div><a href="https://github.com7.3.6-SRV-OFF-X86/kernel-7.3.6_karts_srv_off-2.x86_64.rpm">📦 kernel</a><a href="https://github.com7.3.6-SRV-OFF-X86/kernel-headers-7.3.6_karts_srv_off-2.x86_64.rpm">🛠️ kernel-headers</a><a href="https://github.com7.3.6-SRV-OFF-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-SRV-OFF-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge bin">⚙️ BIN</span><div class="dropdown-content"><div class="dd-title">Standalone Binary</div><a href="https://github.com7.3.6-SRV-OFF-X86/vmlinuz-7.3.6-karts-srv-off-x86_64">🚀 vmlinuz</a><a href="https://github.com7.3.6-SRV-OFF-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-SRV-OFF-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+      </td>
     </tr>
-    
-    <tr>
-        <td>3</td>
-        <td><strong>DSK-GAM-X86</strong></td>
-        <td>DESKTOP</td>
-        <td>GAMER</td>
-        <td><code>x86_64</code></td>
-        <td>1000Hz low-latency desktop kernel with NTSYNC enabled for high-FPS gaming (Proton/Wine) and responsive workloads.<br><small style="color:#555;">1000Hz-es, alacsony késleltetésű asztali kernel NTSYNC támogatással játékokhoz (Proton/Wine) és gyors munkavégzéshez.</small></td>
-        <td><a href="https://github.com7.3.6-DSK-GAM-X86" target="_blank">Download / Letöltés</a></td>
+    <tr class="row-desc"><td colspan="5">Storage and file server kernel with full Software RAID (0/1/5/6/10), LVM, XFS/Btrfs, and USB backup support.</td></tr>
+
+    <tr class="row-top">
+      <td rowspan="2" class="idx-cell">3</td><td class="code-cell">DSK-GAM-X86</td><td>DESKTOP</td><td>GAMER</td><td><code>x86_64</code></td>
+      <td class="dl-cell">
+        <div class="dropdown"><span class="badge deb">🌀 DEB</span><div class="dropdown-content"><div class="dd-title">Debian / Ubuntu (.deb)</div><a href="https://github.com7.3.6-DSK-GAM-X86/linux-image-7.3.6-karts-dsk-gam_7.3.6-2_amd64.deb">📦 linux-image</a><a href="https://github.com7.3.6-DSK-GAM-X86/linux-headers-7.3.6-karts-dsk-gam_7.3.6-2_amd64.deb">🛠️ linux-headers</a><a href="https://github.com7.3.6-DSK-GAM-X86/linux-libc-dev_7.3.6-2_amd64.deb">📚 linux-libc-dev</a><a href="https://github.com7.3.6-DSK-GAM-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-DSK-GAM-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge rpm">🎩 RPM</span><div class="dropdown-content"><div class="dd-title">RHEL / Fedora (.rpm)</div><a href="https://github.com7.3.6-DSK-GAM-X86/kernel-7.3.6_karts_dsk_gam-2.x86_64.rpm">📦 kernel</a><a href="https://github.com7.3.6-DSK-GAM-X86/kernel-headers-7.3.6_karts_dsk_gam-2.x86_64.rpm">🛠️ kernel-headers</a><a href="https://github.com7.3.6-DSK-GAM-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-DSK-GAM-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge bin">⚙️ BIN</span><div class="dropdown-content"><div class="dd-title">Standalone Binary</div><a href="https://github.com7.3.6-DSK-GAM-X86/vmlinuz-7.3.6-karts-dsk-gam-x86_64">🚀 vmlinuz</a><a href="https://github.com7.3.6-DSK-GAM-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-DSK-GAM-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+      </td>
     </tr>
-    
-    <tr>
-        <td>4</td>
-        <td><strong>DSK-HOM-X86</strong></td>
-        <td>DESKTOP</td>
-        <td>HOME / OFFICE</td>
-        <td><code>x86_64</code></td>
-        <td>Balanced desktop and laptop kernel with power-saving optimizations, full Wi-Fi, Bluetooth, and GPU hardware support.<br><small style="color:#555;">Kiegyensúlyozott asztali és laptop kernel energiatakarékos optimalizációval, teljes Wi-Fi, Bluetooth és GPU támogatással.</small></td>
-        <td><a href="https://github.com7.3.6-DSK-HOM-X86" target="_blank">Download / Letöltés</a></td>
+    <tr class="row-desc"><td colspan="5">1000Hz low-latency desktop kernel with NTSYNC enabled for high-FPS gaming (Proton/Wine) and responsive workloads.</td></tr>
+
+    <tr class="row-top">
+      <td rowspan="2" class="idx-cell">4</td><td class="code-cell">DSK-HOM-X86</td><td>DESKTOP</td><td>HOME / OFFICE</td><td><code>x86_64</code></td>
+      <td class="dl-cell">
+        <div class="dropdown"><span class="badge deb">🌀 DEB</span><div class="dropdown-content"><div class="dd-title">Debian / Ubuntu (.deb)</div><a href="https://github.com7.3.6-DSK-HOM-X86/linux-image-7.3.6-karts-dsk-hom_7.3.6-2_amd64.deb">📦 linux-image</a><a href="https://github.com7.3.6-DSK-HOM-X86/linux-headers-7.3.6-karts-dsk-hom_7.3.6-2_amd64.deb">🛠️ linux-headers</a><a href="https://github.com7.3.6-DSK-HOM-X86/linux-libc-dev_7.3.6-2_amd64.deb">📚 linux-libc-dev</a><a href="https://github.com7.3.6-DSK-HOM-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-DSK-HOM-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge rpm">🎩 RPM</span><div class="dropdown-content"><div class="dd-title">RHEL / Fedora (.rpm)</div><a href="https://github.com7.3.6-DSK-HOM-X86/kernel-7.3.6_karts_dsk_hom-2.x86_64.rpm">📦 kernel</a><a href="https://github.com7.3.6-DSK-HOM-X86/kernel-headers-7.3.6_karts_dsk_hom-2.x86_64.rpm">🛠️ kernel-headers</a><a href="https://github.com7.3.6-DSK-HOM-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-DSK-HOM-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge bin">⚙️ BIN</span><div class="dropdown-content"><div class="dd-title">Standalone Binary</div><a href="https://github.com7.3.6-DSK-HOM-X86/vmlinuz-7.3.6-karts-dsk-hom-x86_64">🚀 vmlinuz</a><a href="https://github.com7.3.6-DSK-HOM-X86/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-DSK-HOM-X86" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+      </td>
     </tr>
-    
-    <tr>
-        <td>5</td>
-        <td><strong>NET-RTR-ARM</strong></td>
-        <td>NETWORK</td>
-        <td>ROUTER / FIREWALL</td>
-        <td><code>arm64</code></td>
-        <td>Hardened ARM64 kernel for Raspberry Pi and SBC routers with full Netfilter, WireGuard VPN, VLAN, and QoS routing.<br><small style="color:#555;">Szigorított ARM64 kernel Raspberry Pi és SBC routerekhez teljes Netfilter, WireGuard VPN, VLAN és QoS támogatással.</small></td>
-        <td><a href="https://github.com7.3.6-NET-RTR-ARM" target="_blank">Download / Letöltés</a></td>
+    <tr class="row-desc"><td colspan="5">Balanced desktop and laptop kernel with power-saving optimizations, full Wi-Fi, Bluetooth, and GPU hardware support.</td></tr>
+
+    <tr class="row-top">
+      <td rowspan="2" class="idx-cell">5</td><td class="code-cell">NET-RTR-ARM</td><td>NETWORK</td><td>ROUTER / FIREWALL</td><td><code>arm64</code></td>
+      <td class="dl-cell">
+        <div class="dropdown"><span class="badge deb">🌀 DEB</span><div class="dropdown-content"><div class="dd-title">Debian / Ubuntu (.deb)</div><a href="https://github.com7.3.6-NET-RTR-ARM/linux-image-7.3.6-karts-net-rtr_7.3.6-2_arm64.deb">📦 linux-image</a><a href="https://github.com7.3.6-NET-RTR-ARM/linux-headers-7.3.6-karts-net-rtr_7.3.6-2_arm64.deb">🛠️ linux-headers</a><a href="https://github.com7.3.6-NET-RTR-ARM/linux-libc-dev_7.3.6-2_arm64.deb">📚 linux-libc-dev</a><a href="https://github.com7.3.6-NET-RTR-ARM/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-NET-RTR-ARM" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge rpm">🎩 RPM</span><div class="dropdown-content"><div class="dd-title">RHEL / Fedora (.rpm)</div><a href="https://github.com7.3.6-NET-RTR-ARM/kernel-7.3.6_karts_net_rtr-2.aarch64.rpm">📦 kernel</a><a href="https://github.com7.3.6-NET-RTR-ARM/kernel-headers-7.3.6_karts_net_rtr-2.aarch64.rpm">🛠️ kernel-headers</a><a href="https://github.com7.3.6-NET-RTR-ARM/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-NET-RTR-ARM" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+        <div class="dropdown"><span class="badge bin">⚙️ BIN</span><div class="dropdown-content"><div class="dd-title">Standalone Binary</div><a href="https://github.com7.3.6-NET-RTR-ARM/vmlinuz-7.3.6-karts-net-rtr-arm64">🚀 vmlinuz</a><a href="https://github.com7.3.6-NET-RTR-ARM/SHA256SUMS.txt">🔒 SHA256SUMS.txt</a><a href="https://github.com7.3.6-NET-RTR-ARM" target="_blank" class="all-link">↗ All Release Assets</a></div></div>
+      </td>
     </tr>
-    
-        </tbody>
+    <tr class="row-desc"><td colspan="5">Hardened ARM64 kernel for Raspberry Pi and SBC routers with full Netfilter, WireGuard VPN, VLAN, and QoS routing.</td></tr></tbody>
     </table>
-
-    <div class="box">
-        <h2>📘 Technical Guide &amp; Package Overview / Szakmai Tájékoztató</h2>
-        <ul>
-            <li><strong>linux-image-*.deb / kernel-*.rpm:</strong> The core compiled Linux kernel (<code>vmlinuz</code>) and modules. Automatically updates GRUB and initramfs upon installation.</li>
-            <li><strong>linux-headers-*.deb / kernel-devel-*.rpm:</strong> C header files required only if you compile external out-of-tree kernel modules (e.g., NVIDIA proprietary drivers, VirtualBox, ZFS). Not needed for monolithic server kernels.</li>
-            <li><strong>vmlinuz-*:</strong> Raw standalone kernel binary for custom bootloaders, embedded devices, or specialized OS builds.</li>
-        </ul>
-        <p><strong>Why specialized kernels?</strong> Removing unused drivers and subsystems drastically reduces the <em>attack surface</em> (enhancing cybersecurity) and lowers RAM/CPU overhead. Conversely, a hardened server kernel will intentionally lack desktop hardware support (Wi-Fi, sound, 3D graphics). Always verify the catalog description before deployment.</p>
-    </div>
-
-    <div class="box disclaimer">
-        <h2>⚖️ Legal Disclaimer / Jogi Nyilatkozat</h2>
-        <p><strong>EN:</strong> KArt's Linux provides pre-configured and compiled builds of the upstream Linux kernel under the GNU General Public License v2 (GPLv2). We do not develop the upstream kernel source code; we strictly configure and compile it according to our catalog specifications. The authors assume <strong>no financial or legal liability</strong> for any system downtime, data loss, or hardware malfunction resulting from the use of these packages. Always test in a staging environment before production deployment.</p>
-        <p><strong>HU:</strong> A KArt's Linux a hivatalos Linux kernel forráskódjából készít előre konfigurált és lefordított csomagokat (GPLv2 licenc alatt). A projekt készítői nem vállalnak semmilyen anyagi vagy jogi felelősséget a csomagok használatából eredő rendszerleállásért vagy adatvesztésért; felelősségünk kizárólag arra terjed ki, hogy a csomagok a katalógusban rögzített funkcionális profilnak megfelelően készüljenek el.</p>
-    </div>
+  </div>
+  <div class="box">
+    <h2>📘 Technical Guide &amp; Package Overview</h2>
+    <ul>
+      <li><strong>linux-image-*.deb / kernel-*.rpm:</strong> Core compiled kernel (<code>vmlinuz</code>) and modules.</li>
+      <li><strong>linux-headers-*.deb / kernel-headers-*.rpm:</strong> C header files required for compiling out-of-tree drivers.</li>
+      <li><strong>vmlinuz-*:</strong> Raw standalone kernel binary for custom bootloaders or embedded boards.</li>
+    </ul>
+    <p><strong>Note:</strong> Hardened server profiles intentionally omit desktop drivers to minimize the attack surface.</p>
+  </div>
+  <div class="box disclaimer">
+    <h2>⚖️ Legal Disclaimer</h2>
+    <p>KArt's Linux provides pre-configured builds of the upstream Linux kernel under the GNU General Public License v2 (GPLv2). The authors assume <strong>no financial or legal liability</strong> for any system downtime, data loss, or hardware malfunction.</p>
+  </div>
 </body>
 </html>
